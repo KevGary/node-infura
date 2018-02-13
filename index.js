@@ -38,12 +38,8 @@ class Infura {
    * @returns {Promise} Promise representing the response of the GET reqeuest
    */
   async genericGet(url) {
-    try {
-      const { data: responseBody } = await axios.get(url);
-      return responseBody;
-    } catch (error) {
-      return error;
-    }
+    const response = await axios.get(url);
+    return response.data;
   }
 
   /**
@@ -53,16 +49,12 @@ class Infura {
    * @returns {Promise} Promise representing the response of the POST request
    */
   async genericPost(url, requestBody) {
-    try {
-      const { data: responseBody } = await axios.post(url, requestBody);
-      return responseBody;
-    } catch (error) {
-      return error;
-    }
+    const response = await axios.post(url, requestBody);
+    return response.data;
   }
 
   /**
-   * Get client methods from Infura API
+   * Gets client methods from Infura API
    * @param {string} [network=this.network] Override the default network used in GET request
    * @returns {Promise} Promise representing the response of this GET request
    */
@@ -72,7 +64,7 @@ class Infura {
   }
 
   /**
-   * Get a client method from Infura API
+   * Gets a client method from Infura API
    * @param {string} method The method to get
    * @param {string} [network=this.network] Override the default network used in GET request
    * @returns {Promise} Promise representing the response of this GET request
@@ -83,7 +75,7 @@ class Infura {
   }
 
   /**
-   * Post a client method to Infura API
+   * Posts a client method to Infura API
    * @param {string} method The method to post
    * @param {string[]} [params=[]] Parameters to be used in POST request
    * @param {string} [network=this.network] Override the default network used in POST request
@@ -101,7 +93,7 @@ class Infura {
   }
 
   /**
-   * Get ticker symbols from Infura API
+   * Gets ticker symbols from Infura API
    * @returns {Promise} Promise representing the response of this GET request
    */
   getTickerSymbols() {
@@ -110,7 +102,7 @@ class Infura {
   }
 
   /**
-   * Get information for a ticker symbol from Infura API
+   * Gets information for a ticker symbol from Infura API
    * @param {string} symbol Valid symbol to get ticker information
    * @returns {Promise} Promise representing the response of this GET request
    */
@@ -120,7 +112,7 @@ class Infura {
   }
 
   /**
-   * Get full information for a ticker symbol from Infura API
+   * Gets full information for a ticker symbol from Infura API
    * @param {string} symbol Valid symbol to get full ticker information
    * @returns {Promise} Promise representing the response of this GET request
    */
@@ -130,7 +122,7 @@ class Infura {
   }
 
   /**
-   * Get blacklist from Infura API
+   * Gets blacklist from Infura API
    * @param {Object} [options] Override options for GET request
    * @param {string} [options.apiVersion=v2] Override Infura API version to use in GET request
    * @returns {Promise} Promise representing the response of this GET request
