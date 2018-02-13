@@ -67,7 +67,7 @@ infura.getTickerSymbol('ethusd')
     quote,
     timestamp
     total_volume,
-    volume,
+    volume
   }) => /* handle */)
   .catch(error => /* handle */);
 ```
@@ -97,7 +97,7 @@ infura.getFullTickerSymbol('ethusd')
     fuzzlist,
     tolerance,
     version,
-    whitelist,
+    whitelist
   }) => /* handle */)
   .catch(error => /* handle */);
 ```
