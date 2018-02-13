@@ -34,7 +34,7 @@ describe('Infura Rest Client', () => {
   describe('genericGet', () => {
     it('should invoke the GET request method with url', async () => {
       const url = 'url';
-      const axiosStub = sandbox.stub(axios, 'get');
+      const axiosStub = sandbox.stub(axios, 'get').resolves({ data: 'test' });
       await this.infura.genericGet(url);
       expect(axiosStub.calledWith(url));
     });
@@ -58,7 +58,7 @@ describe('Infura Rest Client', () => {
   describe('genericPost', () => {
     it('should invoke the POST request method with url', async () => {
       const url = 'url';
-      const axiosStub = sandbox.stub(axios, 'post');
+      const axiosStub = sandbox.stub(axios, 'post').resolves({ data: 'test' });
       await this.infura.genericPost(url);
       expect(axiosStub.calledWith(url));
     });
@@ -180,6 +180,16 @@ describe('Infura Rest Client', () => {
       const data = await this.infura.getTickerSymbols();
       expect(data).to.equal('test');
     });
+
+    it('should throw error if genericGet method rejects with error', async () => {
+      sandbox.stub(this.infura, 'constructUrl');
+      sandbox.stub(this.infura, 'genericGet').rejects(new Error('test'));
+      try {
+        await this.infura.getTickerSymbols();
+      } catch (error) {
+        expect(error).to.be.an('error');
+      }
+    });
   });
 
   describe('getTickerSymbol', async () => {
@@ -196,6 +206,16 @@ describe('Infura Rest Client', () => {
       sandbox.stub(this.infura, 'genericGet').resolves('test');
       const data = await this.infura.getTickerSymbol();
       expect(data).to.equal('test');
+    });
+
+    it('should throw error if genericGet method rejects with error', async () => {
+      sandbox.stub(this.infura, 'constructUrl');
+      sandbox.stub(this.infura, 'genericGet').rejects(new Error('test'));
+      try {
+        await this.infura.getTickerSymbol();
+      } catch (error) {
+        expect(error).to.be.an('error');
+      }
     });
   });
 
@@ -214,6 +234,16 @@ describe('Infura Rest Client', () => {
       const data = await this.infura.getTickerSymbolFull();
       expect(data).to.equal('test');
     });
+
+    it('should throw error if genericGet method rejects with error', async () => {
+      sandbox.stub(this.infura, 'constructUrl');
+      sandbox.stub(this.infura, 'genericGet').rejects(new Error('test'));
+      try {
+        await this.infura.getTickerSymboFulll();
+      } catch (error) {
+        expect(error).to.be.an('error');
+      }
+    });
   });
 
   describe('getBlacklist', async () => {
@@ -230,6 +260,16 @@ describe('Infura Rest Client', () => {
       sandbox.stub(this.infura, 'genericGet').resolves('test');
       const data = await this.infura.getBlacklist();
       expect(data).to.equal('test');
+    });
+
+    it('should throw error if genericGet method rejects with error', async () => {
+      sandbox.stub(this.infura, 'constructUrl');
+      sandbox.stub(this.infura, 'genericGet').rejects(new Error('test'));
+      try {
+        await this.infura.getBlacklist();
+      } catch (error) {
+        expect(error).to.be.an('error');
+      }
     });
   });
 });
