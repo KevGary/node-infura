@@ -1,4 +1,4 @@
-A Node.js client library for using the [Infura](https://infura.io/) API. See [documentation](https://infura.docs.apiary.io) here.
+A Node.js client library for using the [Infura API](https://infura.docs.apiary.io).
 
 # Install
 
@@ -100,4 +100,16 @@ infura.getFullTickerSymbol('ethusd')
     whitelist,
   }) => /* handle */)
   .catch(error => /* handle */);
+```
+
+# Test
+
+```bash
+npm run test
+```
+
+# JSDoc
+
+```bash
+npm run jsdoc
 ```
